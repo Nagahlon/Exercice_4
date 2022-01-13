@@ -227,7 +227,7 @@ FIN*/
         switch (i) {
             case 1:{
                 printf("X\n");
-            }
+            } //on fait la premiere ligne du triangle
             break;
             case 2:{
                 printf("XX\n");
