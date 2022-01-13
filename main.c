@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#define MAXPERS 250
 
 int main()
 {
@@ -113,17 +114,18 @@ FIN*/
         if (age==ageaubgr){
             prix=0;
         }
-        else{
+        else
             if (age<10){
                 prix=prix+5;
             }
             else{
                 prix=prix+30;
+
                 if (poids>=20){
                 prix=prix+10;
                 }
             }
-        }
+
 
         printf("La chambre vous coutera %d ecus", prix);
 
@@ -135,7 +137,8 @@ FIN*/
 //ENTRE nombre de personnes qui entre et nombre de personne qui sort
 //SORTIE une alerte et un blocage de la salle si elle est pleine.
 
-VAR nbrepers, pers, maxpers : ENTIER //initialisation des variables
+CONST MAXPERS<-250 : ENTIER
+VAR nbrepers, pers : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -143,44 +146,54 @@ DEBUT
 
     nbrepers <- 0
     pers <-0
-    maxpers <- 250
+    maxpers <- 250 //correction
 
     REPETER
         ECRIRE "Entrez le nombre de personnes entrantes ou sortantes" //On demande à l'utilisateur d'entrer une valeur
         LIRE nbrepers //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable nbrepers
+
         pers <- pers+nbrepers
-        SI (pers>maxpers) //on verifie si des personnes peuvent encore rentrees
+
+        SI (pers<=0 OU pers>maxpers) //on verifie si des personnes peuvent encore rentrees
         FAIRE
-            ECRIRE "Entree impossible"
+            ECRIRE "Valeurs impossible"
             pers <- pers-nbrepers
         SINON
-            SI (pers=maxpers) //on verifie si la salle est pleine
+            SI (pers=MAXPERS) //on verifie si la salle est pleine
             FAIRE
                 ECRIRE "Nombre Maximum Atteint"
-    TANTQUE (pers!=0) //on sort de la boucle si la salle est vide
+
+            FINSI
+        FINSI
+        ECRIRE pers
+    TANTQUE (pers<>-1) //on sort de la boucle si la salle est vide
+    FINREPETER
 
 FIN*/
 
     //Exercice 3 - Start to play
 
-    /*int nbrepers=0, pers=0, maxpers=250; //initialisation des variables
+    /*int nbrepers=0, pers=0; //initialisation des variables
 
     //DEBUT
 
         do{
             printf("Entrez le nombre de personnes entrantes ou sortantes\n");
             scanf ("%d", &nbrepers);
+
             pers=pers+nbrepers;
-            if (pers>maxpers){
-                printf("Entree impossible\n\n");
+
+            if (pers<=0 || pers>MAXPERS){
+                printf("Valeurs impossible\n\n");
                 pers=pers-nbrepers;
-            }
-            else{
-                if (pers==maxpers){
+            }else{
+                if (pers==MAXPERS){
                     printf("Nombre Maximum Atteint\n\n");
                 }
             }
-        }while (pers!=0);
+            printf("%d\n", pers);
+        }while (pers!=-1);
+
 
     //FIN*/
 
@@ -225,7 +238,7 @@ FIN*/
 
     //Exercice 4 - Triangle
 
-    /*int lignes=8, i=0, j=0, k=0; //initialisation des variables
+    /*int lignes=100, i=0, j=0, k=0; //initialisation des variables
 
     //DEBUT
 
@@ -259,6 +272,43 @@ FIN*/
     }
 
     //FIN*/
+
+    //TEST CORRECTION
+
+    /*int lignes=8, i=0, j=0;
+
+    for (i=0 ; i<=lignes ; i++){
+        if  (i<3 || i==lignes){
+            for(j=0 ; j<i ; j++){
+                printf("X");
+            }
+            printf("\n");
+        }else{
+            printf("X");
+            for (j=0 ; j<i-2 ; j++){
+                printf("O");
+            }
+            printf("X\n");
+        }
+    }*/
+
+    //remarque c'est ce que j'ai fait pour le carré
+    //au final prendre sous l'angle d'un tableau/matrice
+
+    //CORRECTION !
+
+    /*int taille=8; i=0, j=0;
+
+    for(i=1;i<=tailles;i++){
+        for(j=i;j<=taille;j++){
+            if(j==1||i==j||i==taille){
+                printf("X")
+            }else if(j<i){
+                printf("O")
+            }
+        }
+        printf("\n")
+    }*/
 
 
 /*Algorithme triangle bis
@@ -310,6 +360,18 @@ FIN*/
             printf("%d", i);
         }
         colonnes=colonnes-1;
+        printf("\n");
+    }*/
+
+    //CORRECTION !
+    int lignes=10, i=0, j=0;
+
+    for(i=0;i<lignes;i++){
+        for(j=0;j<lignes;j++){
+            if(j<i){
+                printf(" ");
+            }else printf("%d", i);
+        }
         printf("\n");
     }
 
