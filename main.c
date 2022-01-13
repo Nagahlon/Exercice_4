@@ -8,7 +8,7 @@ int main()
 //ENTRE Nombre de lieux puis nombre d'habitants
 //SORTIE Nombre de ville
 
-VAR nbrelieu, nbrehab, nbreville, i : ENTIER
+VAR nbrelieu, nbrehab, nbreville, i : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -16,19 +16,20 @@ DEBUT
 
     nbreville <- 0
 
+    ECRIRE "Entrez le nombre de lieu" //On demande à l'utilisateur d'entrer une valeur
+    LIRE nbrelieu //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable nbrelieu
 
-    ECRIRE "Entrez le nombre de lieu"
-    LIRE nbrelieu
-
-    POUR i DE 1 A nbrelieu FAIRE PAS DE 1
+    POUR i DE 1 A nbrelieu FAIRE PAS DE 1 //on repete pour le nombre de lieu rentre
     FAIRE
-        ECRIRE "Entrez le nombre d'habitants de la ville " + i
-        LIRE nbrehab
+        ECRIRE "Entrez le nombre d'habitants de la ville " + i //On demande à l'utilisateur d'entrer une valeur
+        LIRE nbrehab //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable nbrehab
+
         SI (nbrehab>10000) //verifie si le lieu est une ville
         FAIRE
             nbreville <- nbreville+1 //compteur de nombre de ville
         FINSI
     FINPOUR
+
     //une boucle pour entrez le nombre d'habitant de chaque lieu
 
     ECRIRE "Vous avez voyagez dans " + nbreville + " villes"
@@ -38,14 +39,17 @@ FIN*/
     //Exercice 1 - Voyage
 
     /*int nbrelieu=0, nbrehab=0, nbreville=0, i=0; //initialisation des variables
+
     //DEBUT
-        printf("Entrez le nombre de lieu\n"); //On demande à l'utilisateur d'entrer une valeur
-        scanf("%d", &nbrelieu); //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable nbrelieu
+
+        printf("Entrez le nombre de lieu\n");
+        scanf("%d", &nbrelieu);
 
         for (i=1 ; i <= nbrelieu ; i++)
         {
             printf("\nEntrez le nombre d'habitants de la ville %d\n", i);
             scanf("%d", &nbrehab);
+
             if (nbrehab>10000){
                 nbreville=nbreville+1;
             }
@@ -61,7 +65,7 @@ FIN*/
 //ENTRE Poids des bagages et age de la personne
 //SORTIE Prix de la chambre
 
-VAR age, poids, ageaubrg, prix : ENTIER
+VAR age, poids, ageaubrg, prix : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -82,8 +86,10 @@ DEBUT
         SI (age<10) //on verifie si le client est un enfant
         FAIRE
             prix <- prix+5
+
         SINON
             prix <- prix+30
+
             SI (poids >= 20) //on verifie le poids des bagages
             FAIRE
                 prix <- prix+10
@@ -129,7 +135,7 @@ FIN*/
 //ENTRE nombre de personnes qui entre et nombre de personne qui sort
 //SORTIE une alerte et un blocage de la salle si elle est pleine.
 
-VAR nbrepers, pers, maxpers : ENTIER
+VAR nbrepers, pers, maxpers : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -184,7 +190,7 @@ FIN*/
 //ENTRE Poids des bagages et age de la personne
 //SORTIE Prix de la chambre
 
-VAR lignes, i, j, k : ENTIER
+VAR lignes, i, j, k : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -192,30 +198,30 @@ DEBUT
 
     lignes <- 8
 
-    POUR i DE 1 A lignes-3 FAIRE PAS DE 1
+    POUR i DE 1 A lignes-3 FAIRE PAS DE 1 //comme on trace specifiquement trois lignes on repetes pour le nombre de lignes indique reduit de trois
     FAIRE
         CAS ( i ) PARMI :
-            CAS1: 1         ECRIRE "X\n"
-            CAS2: 2         ECRIRE "XX\n"
-            CAS3: 3         POUR j DE 1 A lignes-3 FAIRE PAS DE 1
+            CAS1: 1         ECRIRE "X\n" //on fait la premiere ligne du triangle
+            CAS2: 2         ECRIRE "XX\n" //on fait la deuxième ligne du triangle
+            CAS3: 3         POUR j DE 1 A lignes-3 FAIRE PAS DE 1 //comme on trace specifiquement trois lignes on repetes pour le nombre de lignes indique reduit de trois
                             FAIRE
                                 ECRIRE "X"
-                                POUR k DE 1 A j FAIRE PAS DE 1
+                                POUR k DE 1 A j FAIRE PAS DE 1 //chaque ligne repete autant le charactere O que l'increment j
                                 FAIRE
                                     ECRIRE "O"
                                 FINPOUR
                                 ECRIRE "X\n"
-                            FINPOUR
+                            FINPOUR //on fait toutes les lignes jusqu'à l'avant dernière
 
             CAS4: lignes    POUR j DE 1 A lignes FAIRE PAS DE 1
                             FAIRE
                                 ECRIRE "X"
-                            FINPOUR
+                            FINPOUR //on fait la dernière ligne
         FINCASPARMI
     FINPOUR
 
-
 FIN*/
+
 
     //Exercice 4 - Triangle
 
@@ -227,7 +233,7 @@ FIN*/
         switch (i) {
             case 1:{
                 printf("X\n");
-            } //on fait la premiere ligne du triangle
+            }
             break;
             case 2:{
                 printf("XX\n");
@@ -260,7 +266,7 @@ FIN*/
 //ENTRE Poids des bagages et age de la personne
 //SORTIE Prix de la chambre
 
-VAR lignes, colonnes, i, j, k : ENTIER
+VAR lignes, colonnes, i, j, k : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -269,17 +275,23 @@ DEBUT
     lignes <- 10
     colonnes=lignes
 
-    POUR i DE 0 A lignes FAIRE PAS DE 1
+    POUR i DE 0 A lignes FAIRE PAS DE 1 //on repete le nombre de ligne du triangle
     FAIRE
         POUR k DE 1 A i FAIRE PAS DE 1
         FAIRE
             ECRIRE " "
         FINPOUR
+
+//on insere les espaces pour inverser le triangle
+
         POUR j DE colonnes A 0 FAIRE PAS DE -1
         FAIRE
             ECRIRE i
         FINPOUR
-        ECRIRE "\n"
+
+//on repete le nombre de colonne par ligne du triangle
+
+        ECRIRE "\n" //retour a la ligne pour chaque changement de ligne du triangle
     FINCASPARMI
 
 FIN*/
@@ -325,15 +337,17 @@ DEBUT
     ECRIRE "Entrez le charactere du remplissage"
     LIRE c2
 
-    POUR i DE 1 A l FAIRE PAS DE 1
+    //integration des parametres du carre
+
+    POUR i DE 1 A l FAIRE PAS DE 1 //largeur du carre
     FAIRE
-        SI (i=1) ou (i=l)
+        SI (i=1) ou (i=l) //on verifie pour tracer la premiere et derniere ligne du carre
         FAIRE
             POUR j DE 1 A L FAIRE PAS DE 1
             FAIRE
                 ECRIRE c1
             FINPOUR
-        SINON
+        SINON //le reste pour tracer toutes les autres lignes du carre
         FAIRE
             ECRIRE c1
             POUR j DE 1 A L-2 FAIRE PAS DE 1
@@ -342,7 +356,7 @@ DEBUT
             FINPOUR
             ECRIRE c1
         FINSI
-        ECRIRE "\n"
+        ECRIRE "\n" //retour a la ligne pour chaque changement de ligne du carre
     FINPOUR
 
 FIN*/
@@ -387,7 +401,7 @@ FIN*/
 //ENTRE la population totale de la ville
 //SORTIE nombre de jours avant que la ville entiere soit malade
 
-VAR poptt, popinf, jours : ENTIER
+VAR poptt, popinf, jours : ENTIER //initialisation des variables
 
 DEBUT
 
@@ -396,13 +410,13 @@ DEBUT
     popinf <- 1
     jours <- 1
 
-    ECRIRE "Entrez la population totale de la ville"
-    LIRE poptt
+    ECRIRE "Entrez la population totale de la ville" //On demande à l'utilisateur d'entrer une valeur
+    LIRE poptt //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable poptt
 
     REPETER
         popinf <- popinf+popinf*2
         jours <- jours+1
-    TANTQUE (popinf<=poptt)
+    TANTQUE (popinf<=poptt) //verifie tant que la population infectee est inferieur ou egale  a la population totale
 
     ECRIRE "La ville sera intierement infectee en " + jours + " jours"
 
@@ -433,17 +447,17 @@ FIN*/
 //ENTRE la population totale de la ville
 //SORTIE nombre de jours avant que la ville entiere soit malade
 
-VAR maxp, pierre, h : ENTIER
+VAR maxp, pierre, h : ENTIER //initialisation des variables
 
 DEBUT
 
-    ECRIRE "Entrez la quantite de pierres disponible"
-    LIRE maxp
+    ECRIRE "Entrez la quantite de pierres disponible" //On demande à l'utilisateur d'entrer une valeur
+    LIRE maxp //On lit la valeur qu'entre l'utilisateur et on l'affecte à la variable maxp
 
-    TANT QUE (pierre + (h * h) < maxp)
+    TANT QUE (pierre + (h * h) < maxp) //on verifie a l'avance si le calcul depassera le total de pierre disponible
     FAIRE
-        pierre <- pierre + (h * h)
-        h <- i + 1
+        pierre <- pierre + (h * h) //on effectue le calcul
+        h <- i + 1 //un compteur pour chaque hauteur
     FINTANTQUE
 
     ECRIRE "La plus grande pyramide qui pourra etre construite montera de " + h-1 + " hauteurs3 et necessitera " + pierre + " pierres"
@@ -452,7 +466,7 @@ FIN*/
 
     //Exercice 7 - Pyramide
 
-    int maxp=0, h=0, pierre=0; //initialisation des variables
+    /*int maxp=0, h=0, pierre=0; //initialisation des variables
 
     //DEBUT
 
